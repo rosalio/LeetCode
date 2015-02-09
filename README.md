@@ -1,3 +1,3 @@
 # LeetCode
-# Rosalio
-The Online LeetCode Problems
+Author: Rosalio
+Content: The Online LeetCode Problems
