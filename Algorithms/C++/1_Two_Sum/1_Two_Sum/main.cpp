@@ -38,6 +38,43 @@ vector<int> twoSum(vector<int>& nums, int target) {
     return result;
 }
 
+vector<int> twoSum2(vector<int>& nums, int target) {
+    vector<int> result(2);
+    
+    vector<int> numsSorted = nums;
+    int pHead = 0;
+    int pTail = (int)(nums.size() - 1);
+    sort(numsSorted.begin(), numsSorted.end());
+    
+    while (pHead < pTail) {
+        int sum = numsSorted[pHead] + numsSorted[pTail];
+        if (sum == target) {
+            vector<int>::iterator itFirst = find(nums.begin(), nums.end(), numsSorted[pHead]);
+            int first = (int)distance(nums.begin(), itFirst);
+            vector<int>::iterator itSecond = find(nums.begin(), nums.end(), numsSorted[pTail]);
+            int second = (int)distance(nums.begin(), itSecond);
+            
+            if (first == second) {
+                itSecond = find(itSecond + 1, nums.end(), numsSorted[pTail]);
+                second = (int)distance(nums.begin(), itSecond);
+            }
+            
+            if (first > second) {
+                swap(first, second);
+            }
+            
+            result[0] = first + 1;
+            result[1] = second + 1;
+            break;
+        } else if (sum < target) {
+            pHead++;
+        } else {
+            pTail--;
+        }
+    }
+    return result;
+}
+
 int main(int argc, const char * argv[]) {
     vector<int> input = {2, 7, 11, 15};
     int target = 9;
@@ -52,7 +89,6 @@ int main(int argc, const char * argv[]) {
     cout << "}, target=" << target << endl;
     
     vector<int> output = twoSum(input, target);
-    
     if (output.size() == 2) {
         cout << "Output: index1=" << output[0] << ", index2=" << output[1] << endl;
     } else {
