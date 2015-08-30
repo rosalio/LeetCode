@@ -1,0 +1,32 @@
+package alex.solution;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class Solution {
+
+	public static void main(String[] args) {
+		int[] input = {2, 7, 11, 15};
+		int target = 9;
+		
+		System.out.println("Input: number={2, 7, 11, 15}, target=9");
+		int[] output = twoSum(input, target);
+		System.out.println("Output: index1=" + output[0] + ", index2=" + output[1]);
+	}
+	
+	
+	public static int[] twoSum(int[] nums, int target) {
+		Map<Integer, Integer> table= new HashMap<>();
+		int[] result = {-1, -1};
+		
+        for (int i = 0; i < nums.length; i++) {
+            if (!table.containsKey(new Integer(target - nums[i]))) {
+                table.put(new Integer(nums[i]), new Integer(i));
+            } else {
+                result[0] = table.get(target - nums[i]).intValue() + 1;
+                result[1] = i + 1;
+            }
+        }
+        return result;
+	}
+}
