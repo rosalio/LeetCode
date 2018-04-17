@@ -1,3 +1,3 @@
 # LeetCode
 Author: Rosalio
-Content: The Online LeetCode Problems
+Content: Solutions for Online LeetCode Problems
