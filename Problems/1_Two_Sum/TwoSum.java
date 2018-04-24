@@ -30,17 +30,17 @@ class TwoSum {
 
     public static int[] twoSum(int[] nums, int target) {
         int[] result = {-1, -1};
-        final HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+        final HashMap<Integer, Integer> map = new HashMap<>();
 
         for (int i = 0; i < nums.length; ++i) {
             final int num = nums[i];
-            if (map.containsKey(new Integer(target - num))) {
-                final int firstIndex = (map.get(target - num)).intValue();
+            if (map.containsKey(target - num)) {
+                final int firstIndex = map.get(target - num);
                 result[0] = firstIndex;
                 result[1] = i;
                 return result;
             }
-            map.put(new Integer(num), new Integer(i));
+            map.put(num, i);
         }
         return result;
     }
