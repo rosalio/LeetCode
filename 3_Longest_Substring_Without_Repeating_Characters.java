@@ -1,4 +1,5 @@
 class Solution {
+
     // Sliding window approach
     // public int lengthOfLongestSubstring(String s) {
     //     if (s == null) {
