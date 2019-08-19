@@ -61,8 +61,7 @@ class Solution {
                 continue;
             }
             if (s.charAt(i) == '(' || s.charAt(i) == ')') {
-                String copy = new String(s);
-                copy = copy.substring(0, i) + copy.substring(i + 1);
+                String copy = s.substring(0, i) + s.substring(i + 1);
                 if (r > 0) {
                     dfs(copy, i, l, r - 1, ans);
                 } else if (l > 0) {
