@@ -1,46 +1,28 @@
-class Solution {
+public class Solution {
+    /**
+     * @param costs: n x 3 cost matrix
+     * @return: An integer, the minimum cost to paint all houses
+     */
     public int minCost(int[][] costs) {
-        int m = costs.length;
-        if (m == 0) {
-            return 0;
-        }
-        int n = costs[0].length;
+        int n = costs.length;
         
-        if (m == 1) {
-            return findMin(costs[0]);
+        int[][] ans = new int[n + 1][3];
+        for (int i = 0; i < 3; i++) {
+            ans[0][i] = 0;
         }
         
-        for (int i = 1; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                int[] last = costs[i - 1];
-                costs[i][j] += findMin(last, j);
+        for (int i = 1; i <= n; i++) {
+            for (int j = 0; j < 3; j++) {
+                ans[i][j] = Integer.MAX_VALUE;
+                for (int k = 0; k < 3; k++) {
+                    if (k == j) {
+                        continue;
+                    }
+                    ans[i][j] = Math.min(ans[i][j], ans[i - 1][k] + costs[i - 1][j]);
+                }
             }
         }
-        
-        return findMin(costs[m - 1]);
+
+        return Math.min(ans[n][0], Math.min(ans[n][1], ans[n][2]));
     }
-    
-    private int findMin(int[] nums, int j) {
-        int min = Integer.MAX_VALUE;
-        for (int i = 0; i < nums.length; i++) {
-            if (i == j) {
-                continue;
-            }
-            if (nums[i] < min) {
-                min = nums[i];
-            }
-        }
-        return min;
-    }
-    
-    private int findMin(int[] nums) {
-        int min = nums[0];
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] < min) {
-                min = nums[i];
-            }
-        }
-        return min;
-    }
-    
 }
