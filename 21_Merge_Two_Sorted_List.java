@@ -20,13 +20,7 @@ class Solution {
             }
             currNode = currNode.next;
         }
-        
-        if (l1 != null) {
-            currNode.next = l1;
-        } else if (l2 != null) {
-            currNode.next = l2;
-        }
-        
+        currNode.next = l1 != null ? l1 : l2;
         return dummyHead.next;
     }
 }

@@ -2,26 +2,23 @@ class Solution {
 
     // Use array for ASCII input
     public int lengthOfLongestSubstring(String s) {
-        if (s == null) {
+        if (s == null || s.isEmpty()) {
             return 0;
         }
 
         char[] ss = s.toCharArray();
-        int[] table = new int[256];
-        Arrays.fill(table, -1);
-        int maxLen = 0;
-        int left = 0;
-        int right = 0;
-
-        for (right = 0; right < ss.length; right++) {
-            if (table[ss[right]] == -1 || table[ss[right]] < left) {
-                if (right - left + 1 > maxLen) {
-                    maxLen = right - left + 1;
-                }
+        int[] tt = new int[256];
+        Arrays.fill(tt, -1);
+        int l = 0;
+        int r = 0;
+        int maxLen = -1;
+        for (r = 0; r < ss.length; r++) {
+            if (tt[ss[r]] == -1 || tt[ss[r]] < l) {
+                maxLen = Math.max(maxLen, r - l + 1);
             } else {
-                left = table[ss[right]] + 1;
+                l = tt[ss[r]] + 1;
             }
-            table[ss[right]] = right;
+            tt[ss[r]] = r;
         }
 
         return maxLen;
