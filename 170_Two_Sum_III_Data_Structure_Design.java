@@ -2,7 +2,6 @@ class TwoSum {
 
     private List<Integer> list;
     
-    
     /** Initialize your data structure here. */
     public TwoSum() {
         list = new ArrayList<>();
@@ -23,7 +22,8 @@ class TwoSum {
             int sum = list.get(left) + list.get(right);
             if (sum == value) {
                 return true;
-            } else if (sum < value) {
+            } 
+            if (sum < value) {
                 left++;
             } else {
                 right--;

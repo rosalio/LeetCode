@@ -2,7 +2,7 @@ class Solution {
 
     // Use array for ASCII input
     public int lengthOfLongestSubstring(String s) {
-        if (s == null || s.isEmpty()) {
+        if (s == null) {
             return 0;
         }
 
@@ -11,7 +11,7 @@ class Solution {
         Arrays.fill(tt, -1);
         int l = 0;
         int r = 0;
-        int maxLen = -1;
+        int maxLen = 0;
         for (r = 0; r < ss.length; r++) {
             if (tt[ss[r]] == -1 || tt[ss[r]] < l) {
                 maxLen = Math.max(maxLen, r - l + 1);
