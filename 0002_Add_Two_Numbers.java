@@ -8,10 +8,11 @@
  */
 class Solution {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        ListNode dummyHead = new ListNode(0);
-        ListNode currNode = dummyHead;
+        ListNode dummy = new ListNode(0);
+        ListNode curr = dummy;
         int carry = 0;
-        while (l1 != null || l2 != null || carry > 0) {
+        
+        while (carry > 0 || l1 != null || l2 != null) {
             if (l1 != null) {
                 carry += l1.val;
                 l1 = l1.next;
@@ -20,11 +21,12 @@ class Solution {
                 carry += l2.val;
                 l2 = l2.next;
             }
-            ListNode newNode = new ListNode(carry % 10);
-            currNode.next = newNode;
-            currNode = currNode.next;
+            
+            curr.next = new ListNode(carry % 10);
+            curr = curr.next;
             carry /= 10;
         }
-        return dummyHead.next;
+        
+        return dummy.next;
     }
 }
