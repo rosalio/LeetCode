@@ -1,8 +1,13 @@
 class Solution {
     public int myAtoi(String str) {
-        if (str == null) { return 0; }
+        if (str == null) {
+            return 0;
+        }
+        
         str = str.trim();
-        if (str.isEmpty()) {return 0; }
+        if (str.isEmpty()) {
+            return 0;
+        }
         
         int i = 0;
         boolean isNegative = false;
