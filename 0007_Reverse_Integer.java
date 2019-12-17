@@ -29,15 +29,15 @@ class Solution {
     }
 
     // Use Long and convert to Integer
-    // public int reverse(int x) {
-    //     long result = 0;
-    //     while (x != 0) {
-    //         result = 10 * result +  x % 10;;
-    //         if (result > Integer.MAX_VALUE || result < Integer.MIN_VALUE) {
-    //             return 0;
-    //         }
-    //         x = x / 10;
-    //     }
-    //     return (int) result;
-    // }
+    public int reverse2(int x) {
+        long res = 0;
+        while (x != 0) {
+            result = 10 * result +  x % 10;
+            if (res > Integer.MAX_VALUE || res < Integer.MIN_VALUE) {
+                return 0;
+            }
+            x /= 10;
+        }
+        return (int) result;
+    }
 }
